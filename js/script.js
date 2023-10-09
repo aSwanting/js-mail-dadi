@@ -33,9 +33,8 @@ function checkUserEmailwithArray() {
 
 }
 
-
 // Add Validation to form input
-document.getElementById("playBtnDOM").addEventListener("click", function validateEmail() {
+document.getElementById("checkBtnDOM").addEventListener("click", function validateEmail() {
 
     const formValidation = document.getElementById("userEmailDOM").classList
 
@@ -43,6 +42,7 @@ document.getElementById("playBtnDOM").addEventListener("click", function validat
     if (!checkUserEmailwithArray()) {
         formValidation.remove("is-valid")
         formValidation.add("is-invalid")
+
     } else {
         formValidation.remove("is-invalid")
         formValidation.add("is-valid")
