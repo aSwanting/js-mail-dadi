@@ -12,7 +12,32 @@
 
 <body>
 
-    <main class="app-main">
+    <main class="app-main p-5 text-center">
+
+        <div class="container border rounded-4 px-5 py-4">
+
+            <h1 class="display-6 mb-5 text-uppercase">Enter Email Adress to Play!</h1>
+
+            <div class="d-flex justify-content-center gap-3 mb-4">
+
+                <div class="flex-grow-1">
+                    <input class="form-control" name="userEmail" id="userEmailDOM" type="text"
+                        placeholder="email@domain.com">
+                    <div id="userEmailDOMfeedback" class="valid-feedback">Email Exists!</div>
+                    <div id="userEmailDOMfeedback" class="invalid-feedback">Email Missing!</div>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary px-4" id="playBtnDOM">Play</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
 
     </main>
 
