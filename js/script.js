@@ -9,6 +9,8 @@ function getUserEmail() {
 // Compare with Array
 function checkUserEmailwithArray() {
 
+    let emailPresent = false
+
     const emailAdresses = [
         "john@gmail.com",
         "gab@gmail.com",
@@ -25,11 +27,11 @@ function checkUserEmailwithArray() {
     for (i = 0; i < emailAdresses.length; i++) {
 
         if (getUserEmail() === emailAdresses[i]) {
-            return true
+            emailPresent = true
         }
     }
 
-    return false
+    return emailPresent
 
 }
 
@@ -40,10 +42,12 @@ document.getElementById("checkBtnDOM").addEventListener("click", function valida
 
 
     if (!checkUserEmailwithArray()) {
+        console.log(checkUserEmailwithArray())
         formValidation.remove("is-valid")
         formValidation.add("is-invalid")
 
     } else {
+        console.log(checkUserEmailwithArray())
         formValidation.remove("is-invalid")
         formValidation.add("is-valid")
     }
