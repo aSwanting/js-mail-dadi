@@ -14,7 +14,7 @@
 
     <main class="app-main p-5">
 
-        <div class="container border rounded-4 px-5 py-4">
+        <div class="container-sm border rounded-4 px-5 py-4 mb-5">
 
             <h1 class="display-6 mb-5 text-uppercase text-center">Enter Email Adress to Play!</h1>
 
@@ -33,7 +33,31 @@
 
             </div>
 
+        </div>
 
+        <div class="container-sm border rounded-4 px-5 py-4 mb-4 text-center">
+
+            <h1 class="display-6 mb-5 text-uppercase text-center">Press play to generate numbers!</h1>
+
+            <div class="d-flex justify-content-center gap-5 mb-5">
+                
+                <div >
+                    <div class="number-box border rounded-circle display-3 m-3" id="playerNumberDOM">?</div>
+                    <div>Player Number</div>
+                </div>                
+
+                <div >
+                    <div class="number-box border rounded-circle display-3 m-3" id="computerNumberDOM">?</div>
+                    <div>CPU Number</div>
+                </div>
+
+            </div>
+
+            <div>
+                <button class="btn btn-primary px-5 mb-5" id="playBtnDOM">Play</button>
+            </div>
+
+            <h1 class="display-6 mb-5 text-uppercase text-center" id="gameResultsDOM">Results</h1>
 
         </div>
 

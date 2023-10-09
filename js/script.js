@@ -49,3 +49,24 @@ document.getElementById("checkBtnDOM").addEventListener("click", function valida
     }
 
 })
+
+
+// Press Play button to generate numbers
+document.getElementById("playBtnDOM").addEventListener("click", function validateEmail() {
+
+    const playerNumber = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+    const computerNumber = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+    let gameResults
+
+    document.getElementById("playerNumberDOM").innerHTML = playerNumber
+    document.getElementById("computerNumberDOM").innerHTML = computerNumber
+
+    playerNumber > computerNumber ? gameResults = "Humanity wins!"
+        : playerNumber < computerNumber ? gameResults = "Humanity loses!"
+            : gameResults = "It's a tie!"
+
+    document.getElementById("gameResultsDOM").innerHTML = gameResults
+
+})
+
+
