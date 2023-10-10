@@ -54,16 +54,32 @@ document.getElementById("checkBtnDOM").addEventListener("click", function valida
 
 })
 
+// Generate random number from 1 - 6
+function rollDice() {
 
-// Press Play button to generate numbers
-document.getElementById("playBtnDOM").addEventListener("click", function validateEmail() {
+    const diceSide = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+    return diceSide
+}
 
-    const playerNumber = Math.floor(Math.random() * (6 - 1 + 1) + 1)
-    const computerNumber = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+
+// Press Play button to choose a winner
+document.getElementById("playBtnDOM").addEventListener("click", function chooseWinner() {
+
+    const diceSides = [
+        `<i class="fas fa-dice-one"></i>`,
+        `<i class="fas fa-dice-two"></i>`,
+        `<i class="fas fa-dice-three"></i>`,
+        `<i class="fas fa-dice-four"></i>`,
+        `<i class="fas fa-dice-five"></i>`,
+        `<i class="fas fa-dice-six"></i>`,
+    ]
+
+    const playerNumber = rollDice()
+    const computerNumber = rollDice()
     let gameResults
 
-    document.getElementById("playerNumberDOM").innerHTML = playerNumber
-    document.getElementById("computerNumberDOM").innerHTML = computerNumber
+    document.getElementById("playerNumberDOM").innerHTML = diceSides[playerNumber-1]
+    document.getElementById("computerNumberDOM").innerHTML = diceSides[computerNumber-1]
 
     playerNumber > computerNumber ? gameResults = "Humanity wins!"
         : playerNumber < computerNumber ? gameResults = "Humanity loses!"
