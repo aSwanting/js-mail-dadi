@@ -54,16 +54,11 @@ document.getElementById("checkBtnDOM").addEventListener("click", function valida
 
 })
 
-// Generate random number from 1 - 6
+// Generate random number from 1 - 6, animate dice
 function rollDice() {
 
-    const diceSide = Math.floor(Math.random() * (6 - 1 + 1) + 1)
-    return diceSide
-}
-
-
-// Press Play button to choose a winner
-document.getElementById("playBtnDOM").addEventListener("click", function chooseWinner() {
+    const playerDice = document.getElementById("playerNumberDOM")
+    const computerDice = document.getElementById("computerNumberDOM")
 
     const diceSides = [
         `<i class="fas fa-dice-one"></i>`,
@@ -74,19 +69,56 @@ document.getElementById("playBtnDOM").addEventListener("click", function chooseW
         `<i class="fas fa-dice-six"></i>`,
     ]
 
-    const playerNumber = rollDice()
-    const computerNumber = rollDice()
+    const playerNumber = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+    const computerNumber = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+
+    playerDice.classList.remove("active")
+    computerDice.classList.remove("active")
+    document.getElementById("reflow").offsetWidth
+
+    playerDice.innerHTML = diceSides[playerNumber - 1]
+    playerDice.classList.add("active")
+
+    computerDice.innerHTML = diceSides[computerNumber - 1]
+    computerDice.classList.add("active")
+
+    return { playerNumber, computerNumber }
+
+}
+
+
+// Play game on click, print winner
+document.getElementById("playBtnDOM").addEventListener("click", function chooseWinner() {
+
+    document.getElementById("gameResultsDOM").innerHTML = "..."
+
+    const results = rollDice()
     let gameResults
 
-    document.getElementById("playerNumberDOM").innerHTML = diceSides[playerNumber-1]
-    document.getElementById("computerNumberDOM").innerHTML = diceSides[computerNumber-1]
+    document.getElementById("playerNumberDOM").classList.remove("border-success", "border-danger", "border-warning")
+    document.getElementById("computerNumberDOM").classList.remove("border-success", "border-danger", "border-warning")
 
-    playerNumber > computerNumber ? gameResults = "Humanity wins!"
-        : playerNumber < computerNumber ? gameResults = "Humanity loses!"
-            : gameResults = "It's a tie!"
+    setTimeout(() => {
 
-    document.getElementById("gameResultsDOM").innerHTML = gameResults
+        if (results.playerNumber > results.computerNumber) {
+            gameResults = "Humanity wins!"
+            document.getElementById("playerNumberDOM").classList.add("border-success")
+            document.getElementById("computerNumberDOM").classList.add("border-danger")
+
+        } else if (results.playerNumber < results.computerNumber) {
+            gameResults = "Humanity loses!"
+            document.getElementById("playerNumberDOM").classList.add("border-danger")
+            document.getElementById("computerNumberDOM").classList.add("border-success")
+
+        } else {
+            gameResults = "It's a tie!"
+            document.getElementById("playerNumberDOM").classList.add("border-warning")
+            document.getElementById("computerNumberDOM").classList.add("border-warning")
+        }
+
+        document.getElementById("gameResultsDOM").innerHTML = gameResults
+
+    }, 1000);
 
 })
-
 
